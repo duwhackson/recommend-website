@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>QUIZ</title>
+    <script>
+        function updateSingers() {
+            const genreSelect = document.getElementById("genre");
+            const singerSelect = document.getElementById("singer");
+
+            const selectedGenre = genreSelect.value;
+            const genreToSingers = JSON.parse('{{ genre_to_singers|tojson }}');
+
+
+            singerSelect.innerHTML = "";
+
+
+            const singers = genreToSingers[selectedGenre];
+            if (singers) {
+                for (let s of singers) {
+                    let option = document.createElement("option");
+                    option.value = s;
+                    option.text = s;
+                    singerSelect.appendChild(option);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>OPTIONS</h1>
+    <form method="POST">
+
+        <label for="mbti">MBTI :</label>
+        <select name="mbti" id="mbti" required>
+            <option value="ISTJ">ISTJ</option>
+            <option value="ISFJ">ISFJ</option>
+            <option value="INFJ">INFJ</option>
+            <option value="INTJ">INTJ</option>
+            <option value="ISTP">ISTP</option>
+            <option value="ISFP">ISFP</option>
+            <option value="INFP">INFP</option>
+            <option value="INTP">INTP</option>
+            <option value="ENTP">ENTP</option>
+        </select>
+        <br><br>
+
+
+        <label for="genre">music preference:</label>
+        <select name="genre" id="genre" onchange="updateSingers()" required>
+            <option value="Hip-Hop">Hip-Hop</option>
+            <option value="Pop">Pop</option>
+            <option value="K-Pop">K-Pop</option>
+            <option value="Alternative/Indie">Alternative/Indie</option>
+            <option value="R&B">R&B</option>
+        </select>
+        <br><br>
+
+
+        <label for="singer">recommend singers?:</label>
+        <select name="singer" id="singer" required>
+
+            {% for s in genre_to_singers['Hip-Hop'] %}
+            <option value="{{ s }}">{{ s }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <button type="submit" name="action" value="analyze">analysis</button>
+        <button type="reset">restart</button>
+    </form>
+</body>
+</html>

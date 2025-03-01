@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>result</title>
+</head>
+<body>
+    <h1>result</h1>
+    <p>MBTI: <strong>{{ mbti }}</strong></p>
+    <p>Genres: <strong>{{ genre }}</strong></p>
+    <p>singer: <strong>{{ singer }}</strong></p>
+
+    <hr>
+    <h3>Gemini API (examples)</h3>
+    <p>{{ gemini_comment }}</p>
+
+    <hr>
+    <h3>singer recommend based on your choice</h3>
+    <p>suggest：<strong>{{ niche_artist }}</strong></p>
+
+
+    <br>
+    <a href="{{ url_for('index') }}">test again?</a>
+</body>
+</html>
