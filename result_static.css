@@ -1,0 +1,72 @@
+/* Reset some default styles */
+body {
+    font-family: Times New Roman , sans-serif;
+    background-image: url("WhatsApp Image 2025-03-01 at 21.23.12.jpeg");
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the main title */
+h1 {
+    color: #333;
+    font-size: 2em;
+}
+
+/* Style sections */
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+strong {
+    color: #007bff; /* Blue highlight for emphasis */
+}
+
+/* Horizontal line styling */
+hr {
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    width: 80%;
+}
+
+/* Link styling */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+/*making it responsive*/
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+/*result card*/
+.result-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 20px;
+    width: 60%;
+}
