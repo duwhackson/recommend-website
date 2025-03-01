@@ -164,7 +164,7 @@ def result():
         }
     else:
         niche_artist = {
-            'name': "暂无小众歌手推荐",
+            'name': "sorry for blanket",
             'instagram': "#",
             'spotify': "#",
             'popular_song': "",
