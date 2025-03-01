@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 def load_music_data():
     try:
-        
         encodings = ['cp1252', 'latin1', 'iso-8859-1', 'gbk', 'gb2312', 'utf-8']
 
         for encoding in encodings:
@@ -66,10 +65,8 @@ def create_genre_to_singers_map(df):
     return genre_to_singers
 
 
-# 加载数据
-music_data = load_music_data()
 
-# 创建映射
+music_data = load_music_data()
 genre_to_singers = create_genre_to_singers_map(music_data)
 
 
