@@ -2,7 +2,10 @@ from google import genai
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='static',
+            template_folder='templates')
 
 
 def load_music_data():
