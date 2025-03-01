@@ -3,23 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .niche-artist {
+            margin-top: 20px;
+        }
+        .artist-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .song-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .links a {
+            display: inline-block;
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .comment {
+            margin-top: 30px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-    <h1>result</h1>
-    <p>MBTI: <strong>{{ mbti }}</strong></p>
-    <p>Genres: <strong>{{ genre }}</strong></p>
-    <p>singer: <strong>{{ singer }}</strong></p>
+    <h1>artist</h1>
 
-    <hr>
-    <h3>Gemini API (examples)</h3>
-    <p>{{ gemini_comment }}</p>
+    <div class="section niche-artist">
+        <div class="artist-name">{{ niche_artist.name }}</div>
+        <div class="song-title">hit: {{ niche_artist.popular_song }}</div>
+        <div class="links">
+            <a href="{{ niche_artist.instagram }}" target="_blank">Instagram</a>
+            <a href="{{ niche_artist.spotify }}" target="_blank">Spotify</a>
+            <a href="{{ niche_artist.song_link }}" target="_blank">try it</a>
+        </div>
+    </div>
 
-    <hr>
-    <h3>singer recommend based on your choice</h3>
-    <p>suggest：<strong>{{ niche_artist }}</strong></p>
+    <div class="section">
+        <div class="section-title">some suggestions</div>
+        <div class="comment">
+            {% set comment_parts = gemini_comment.split('As an') %}
+            {% if comment_parts|length > 1 %}
+                {{ comment_parts[1] }}
+            {% else %}
+                {{ gemini_comment.split('*')|last }}
+            {% endif %}
+        </div>
+    </div>
 
-
-    <br>
-    <a href="{{ url_for('index') }}">test again?</a>
+    <a href="/quiz">test again?</a>
 </body>
 </html>

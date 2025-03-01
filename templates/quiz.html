@@ -7,7 +7,6 @@
         function updateSingers() {
             const genreSelect = document.getElementById("genre");
             const singerSelect = document.getElementById("singer");
-
             const selectedGenre = genreSelect.value;
             const genreToSingers = JSON.parse('{{ genre_to_singers|tojson }}');
 
@@ -50,7 +49,7 @@
         <select name="genre" id="genre" onchange="updateSingers()" required>
             <option value="Hip-Hop">Hip-Hop</option>
             <option value="Pop">Pop</option>
-            <option value="K-Pop">K-Pop</option>
+            <option value="Kpop">Kpop</option>
             <option value="Alternative/Indie">Alternative/Indie</option>
             <option value="R&B">R&B</option>
         </select>
@@ -71,3 +70,4 @@
     </form>
 </body>
 </html>
+git remote add origin https://github.com/duwhackson/recommend-website.git
