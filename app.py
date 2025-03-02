@@ -163,7 +163,7 @@ def result():
             'spotify': niche_artist_row['Spotify'],
             'popular_song': niche_artist_row['Popular Song'],
             'song_link': niche_artist_row['Song Link'],
-            'genre': niche_artist_row['GENRE']
+            'genre': niche_artist_row['GENRE'],
             'album_image': niche_artist_row['Album Image'],
             'artist_image':niche_artist_row['Artist Image']
         }
@@ -174,7 +174,7 @@ def result():
             'spotify': "#",
             'popular_song': "",
             'song_link': "#",
-            'genre': genre
+            'genre': genre,
             'album_image' : "#",
             'artist_image' : "#"
         }
