@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>result</title>
+    <link rel="stylesheet" href="result_style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", Arial, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            text-align: center; /* Center-align text and inline elements */
+            background: #f9f9f9;
+
         }
         .section {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            width: 90%;
+            max-width: 600px;
+            margin:0 auto 20px; /* Center the section */
+            padding: 20px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            
+
         }
         .section-title {
             font-size: 24px;
+            font-weight: bold;
             margin-bottom: 15px;
-            color: #333;
+            color: #444;
+           
         }
         .niche-artist {
             margin-top: 20px;
@@ -28,26 +39,53 @@
             font-size: 22px;
             font-weight: bold;
             margin-bottom: 10px;
+            color: #222;
         }
         .song-title {
             font-size: 18px;
             margin: 10px 0;
+            color: #666;
         }
         .links a {
             display: inline-block;
-            margin-right: 15px;
+            margin: 10px;
+            padding: 8px 12px;
             text-decoration: none;
             color: #0066cc;
+            border: 1px solid #0066cc;
+            border-radius: 5px;
+            transition: 0.3s;
+
+        }
+
+        .links a:hover {
+            background: #0066cc;
+            color: white;
         }
         .comment {
-            margin-top: 30px;
+            margin-top: 20px;
             font-style: italic;
             line-height: 1.5;
+            color: #555;
+        }
+          button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #218838;
         }
     </style>
 </head>
 <body>
-    <h1>artist</h1>
+    <h1>Discover This Amazing Artist!</h1>
 
     <div class="section niche-artist">
         <div class="artist-name">{{ niche_artist.name }}</div>
@@ -55,12 +93,12 @@
         <div class="links">
             <a href="{{ niche_artist.instagram }}" target="_blank">Instagram</a>
             <a href="{{ niche_artist.spotify }}" target="_blank">Spotify</a>
-            <a href="{{ niche_artist.song_link }}" target="_blank">try it</a>
+            <a href="{{ niche_artist.song_link }}" target="_blank">Check out this song!</a>
         </div>
     </div>
 
     <div class="section">
-        <div class="section-title">some suggestions</div>
+        <div class="section-title">Artist Suggestions</div>
         <div class="comment">
             {% set comment_parts = gemini_comment.split('As an') %}
             {% if comment_parts|length > 1 %}
@@ -71,6 +109,7 @@
         </div>
     </div>
 
-    <a href="/quiz">test again?</a>
+    <a href="/quiz">
+        <button type="button">Test again?</button> </a>
 </body>
 </html>
