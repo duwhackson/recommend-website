@@ -89,7 +89,9 @@
 
     <div class="section niche-artist">
         <div class="artist-name">{{ niche_artist.name }}</div>
+        <img src="{{ url_for('static', filename=niche_artist.artist_image) }}" alt="{{ niche_artist.name }}" class="artist-image">
         <div class="song-title">hit: {{ niche_artist.popular_song }}</div>
+        <img src="{{ url_for('static', filename=niche_artist.album_image) }}" alt="{{ niche_artist.popular_song}}" class="artist-image">
         <div class="links">
             <a href="{{ niche_artist.instagram }}" target="_blank">Instagram</a>
             <a href="{{ niche_artist.spotify }}" target="_blank">Spotify</a>
