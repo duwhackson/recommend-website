@@ -164,6 +164,8 @@ def result():
             'popular_song': niche_artist_row['Popular Song'],
             'song_link': niche_artist_row['Song Link'],
             'genre': niche_artist_row['GENRE']
+            'album_image': niche_artist_row['Album Image'],
+            'artist_image':niche_artist_row['Artist Image']
         }
     else:
         niche_artist = {
@@ -173,6 +175,8 @@ def result():
             'popular_song': "",
             'song_link': "#",
             'genre': genre
+            'album_image' : "#",
+            'artist_image' : "#"
         }
 
     return render_template('result.html',
