@@ -139,20 +139,58 @@ def result():
         )
         gemini_comment = response.text
     except Exception as e:
-        print(f"Gemini API 调用出错: {e}")
+        print(f"Gemini API wrong: {e}")
         gemini_comment = f"Based on your preference for {genre} music and artists like {singer}, you might enjoy energetic tracks with meaningful lyrics. Your MBTI type {mbti} suggests you appreciate music that resonates with your emotional depth."
 
     print(gemini_comment)
+    normalized_genre = genre
+    if genre.lower() in ['k-pop', 'k pop']:
+        normalized_genre = 'Kpop'
 
 
-    genre_matches = music_data[music_data['GENRE'].str.lower() == genre.lower()]
-
+    genre_matches = music_data[music_data['GENRE'].str.lower() == normalized_genre.lower()]
 
     if genre_matches.empty:
-        for g in music_data['GENRE'].unique():
-            if pd.notna(g) and (genre.lower() in g.lower() or g.lower() in genre.lower()):
-                genre_matches = music_data[music_data['GENRE'] == g]
-                break
+
+        if normalized_genre.lower() in ['kpop', 'k-pop', 'k pop']:
+
+            kpop_matches = music_data[
+                music_data['GENRE'].str.lower().isin(['kpop', 'k-pop', 'k pop'])
+            ]
+            if not kpop_matches.empty:
+                genre_matches = kpop_matches
+
+        else:
+
+            for g in music_data['GENRE'].unique():
+                if pd.notna(g):
+                    print(f"try match: '{g}' & '{normalized_genre}'")
+
+
+                    if g.lower() == 'pop' and normalized_genre.lower() in ['kpop', 'k-pop', 'k pop']:
+
+                        continue
+
+
+                    g_lower = g.lower()
+                    genre_lower = normalized_genre.lower()
+                    if g_lower == genre_lower:
+                        match_found = True
+
+                    elif g_lower.startswith(genre_lower) or genre_lower.startswith(g_lower):
+
+                        if not (g_lower == 'pop' and genre_lower.startswith('k')):
+                            match_found = True
+                        else:
+                            match_found = False
+                    else:
+                        match_found = False
+
+                    if match_found:
+
+                        genre_matches = music_data[music_data['GENRE'] == g]
+                        break
+
 
     if not genre_matches.empty:
 
